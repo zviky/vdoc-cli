@@ -1,16 +1,13 @@
 #!/usr/bin/env node
 const program = require('commander')
-
+let package = require('../../package.json')
 program
-  .version('0.0.1')
+  .version(package.version)
   .command('init')
-  .action(function(dir, otherDirs) {
-    console.log('rmdir %s', dir);
-    if (otherDirs) {
-      otherDirs.forEach(function(oDir) {
-        console.log('rmdir %s', oDir);
-      });
-    }
+  .description('begin init')
+  .alias('i')
+  .action(()=> {
+    require('../commands/init')
   });
 
 program.parse(process.argv);
