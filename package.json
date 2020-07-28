@@ -3,7 +3,7 @@
     "vdoc": "./src/bin/vdoc.js"
   },
   "name": "vdoc-cli",
-  "version": "1.0.1_alpha",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {

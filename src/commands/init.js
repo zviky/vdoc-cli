@@ -34,7 +34,8 @@ async function init() {
   // console.log(__dirname,process.cwd())
   answers.selects.forEach(item=>{
     let fileName = 'src/templates/'+item
-    copyFile(path.resolve(fileName),path.resolve('test/tmp/'+item))
+    
+    copyFile(fileName,path.resolve('test/tmp/'+item))
   })
 }
 

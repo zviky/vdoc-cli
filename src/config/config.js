@@ -6,5 +6,5 @@
  * @LastEditors: doctor
  */ 
 module.exports = {
-  path:'zhushibo/vue-template'
+  path:'https://github.com/zhushibo/vdoc-cli'
 }
