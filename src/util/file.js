@@ -8,6 +8,7 @@
 
 let fs = require('fs');
 let http = require("https");
+
 function download(url) {
   return new Promise((resolve,reject)=>{
     http.get(url, function(res){
@@ -30,6 +31,24 @@ function download(url) {
   })
 }
 
+/**
+ * @description copy file into target dir
+ * @param {string} targetDir  
+ * @param {string} dir
+ */
+function copyFile (targetDir,dir){
+  fs.readFile(targetDir,'utf-8', function(err, data) {
+    if (err) {
+        throw err;
+    } 
+    fs.writeFile(dir,data,'utf-8',function(error){
+       if(error){
+          throw error;
+       }
+    });  
+  })
+}
+
 module.exports = {
-  download
+  download,copyFile
 }

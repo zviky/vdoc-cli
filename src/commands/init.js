@@ -7,9 +7,14 @@
  */ 
 const { prompt } = require('inquirer')
 const ora = require('ora')
-const download = require('download-git-repo')
+const path = require('path')
 
+// const download = require('download-git-repo')
+
+const wordPath = process.execPath
 const config = require('../config/config')
+const { copyFile } = require('../util/file')
+
 
 init()
 async function init() {
@@ -20,15 +25,16 @@ async function init() {
       name: 'selects',
       message: '请选择需要安装项目',
       choices: [
-          { name: 'data', value: 1 },
-          { name: 'utils', value: 2 },
-          { name: 'styles', value: 3 }
+          { name: 'data', value: 'data.js' },
+          { name: 'utils', value: 'utils.js' },
+          { name: 'styles', value: 'styles.styl' }
       ]
     }
   ])
-
-  download(config.path,'test/tmp',(err)=>{
-    console.log(err)
+  // console.log(__dirname,process.cwd())
+  answers.selects.forEach(item=>{
+    let fileName = 'src/templates/'+item
+    copyFile(path.resolve(fileName),path.resolve('test/tmp/'+item))
   })
 }
 
