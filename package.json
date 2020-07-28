@@ -3,7 +3,7 @@
     "vdoc": "./src/bin/vdoc.js"
   },
   "name": "vdoc-cli",
-  "version": "1.0.0",
+  "version": "1.0.1_alpha",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -12,13 +12,13 @@
   "author": "doctor",
   "license": "ISC",
   "dependencies": {
-    "commander": "^5.1.0"
+    "commander": "^5.1.0",
+    "inquirer": "^7.3.3",
+    "ora": "^4.0.5"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^3.2.0",
-    "download-git-repo": "^3.0.2",
-    "inquirer": "^7.3.3",
-    "ora": "^4.0.5"
+    "download-git-repo": "^3.0.2"
   },
   "config": {
     "commitizen": {
