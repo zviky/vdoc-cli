@@ -8,13 +8,16 @@
 const { prompt } = require('inquirer')
 const ora = require('ora')
 const path = require('path')
+const execa = require('execa');
 
 // const download = require('download-git-repo')
 
 const wordPath = process.execPath
 const config = require('../config/config')
-const { copyFile } = require('../util/file')
 
+console.log(process.execPath)  // /usr/local/bin/node
+console.log(__dirname)         // /usr/local/lib/node_modules/vdoc-cli/src/commands
+console.log(process.cwd())     // /Users/doctor/programs/fed/mobile
 
 init()
 async function init() {
@@ -25,17 +28,16 @@ async function init() {
       name: 'selects',
       message: '请选择需要安装项目',
       choices: [
-          { name: 'data', value: 'data.js' },
-          { name: 'utils', value: 'utils.js' },
-          { name: 'styles', value: 'styles.styl' }
+          { name: 'data', value: 'data' },
+          { name: 'utils', value: 'utils' },
+          { name: 'styles', value: 'styles' }
       ]
     }
   ])
-  // console.log(__dirname,process.cwd())
+
   answers.selects.forEach(item=>{
-    let fileName = 'src/templates/'+item
-    
-    copyFile(fileName,path.resolve('test/tmp/'+item))
+    let exec = `vdoc add ${item}`
+    execa.sync(exec)
   })
 }
 

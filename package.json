@@ -3,7 +3,7 @@
     "vdoc": "./src/bin/vdoc.js"
   },
   "name": "vdoc-cli",
-  "version": "1.0.1",
+  "version": "1.0.5",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "commander": "^5.1.0",
+    "execa": "^4.0.3",
     "inquirer": "^7.3.3",
     "ora": "^4.0.5"
   },
