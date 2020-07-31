@@ -2,6 +2,8 @@
 const program = require('commander')
 let package = require('../../package.json');
 const { action } = require('commander');
+
+
 program
   .version(package.version)
   .command('init')

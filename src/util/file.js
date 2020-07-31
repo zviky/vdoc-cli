@@ -8,6 +8,9 @@
 
 let fs = require('fs');
 let http = require("https");
+const { prompt } = require('inquirer')
+
+const chalk = require('chalk');
 
 function download(url) {
   return new Promise((resolve,reject)=>{
@@ -36,7 +39,13 @@ function download(url) {
  * @param {string} targetDir  
  * @param {string} dir
  */
-function copyFile (targetDir,dir){
+async function copyFile (targetDir,dir){
+
+  const exist = await exitstFile(dir)
+  if(exist){
+    throw `${dir} 文件已存在，是否覆盖`
+  }
+
   fs.readFile(targetDir,'utf-8', function(err, data) {
     if (err) {
         throw err;
@@ -49,6 +58,20 @@ function copyFile (targetDir,dir){
   })
 }
 
+function exitstFile(dir){
+  return new Promise(resolve=>{
+    fs.exists(dir, function(exists) {
+      resolve(exists)
+    })
+  })
+
+}
+
+function mkdir(dir){
+  fs.mkdir(dir, { recursive: true }, (err) => {
+    if (err) throw err;
+  });
+}
 module.exports = {
   download,copyFile
 }

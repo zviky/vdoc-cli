@@ -12,6 +12,7 @@
   "author": "doctor",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^4.1.0",
     "commander": "^5.1.0",
     "execa": "^4.0.3",
     "inquirer": "^7.3.3",
