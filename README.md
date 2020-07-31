@@ -2,11 +2,11 @@
 
 ## 目录结构
 
-src
-|-- bin      // 启动文件
-|-- commands // 命令文件
-|-- config   // 配置文件
-|-- packages // 模版生成文件
+src  
+|-- bin      // 启动文件  
+|-- commands // 命令文件  
+|-- config   // 配置文件  
+|-- packages // 模版生成文件  
 |__ test     // 测试目录
 
 ## 开发功能说明
@@ -19,6 +19,9 @@ src
 > 6. axios 模版生成
 > 7. 批量生成模块对应的 floder,api,store
 
+## todo list
+
+[-] 使用单个线程跑命令 
 
 cli for vue
 npm link 才能使用命令

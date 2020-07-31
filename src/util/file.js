@@ -43,7 +43,14 @@ async function copyFile (targetDir,dir){
 
   const exist = await exitstFile(dir)
   if(exist){
-    throw `${dir} 文件已存在，是否覆盖`
+    const answers = await prompt([
+      {
+        type: 'confirm',
+        name: 'rewrite',
+        message: `${dir} 文件已存在，是否覆盖`,
+      }
+    ])
+    if(!answers.rewrite) return
   }
 
   fs.readFile(targetDir,'utf-8', function(err, data) {
@@ -58,6 +65,11 @@ async function copyFile (targetDir,dir){
   })
 }
 
+/**
+ * @description 判断目录是否存在
+ * @param {String} dir
+ * @returns Boolean
+ */
 function exitstFile(dir){
   return new Promise(resolve=>{
     fs.exists(dir, function(exists) {
@@ -67,11 +79,16 @@ function exitstFile(dir){
 
 }
 
+/**
+ * @description 创建目录，会递归创建
+ * @param {*} dir
+ */
 function mkdir(dir){
   fs.mkdir(dir, { recursive: true }, (err) => {
     if (err) throw err;
   });
 }
+
 module.exports = {
-  download,copyFile
+  download,copyFile,mkdir
 }
