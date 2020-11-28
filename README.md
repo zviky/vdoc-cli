@@ -14,10 +14,10 @@ src
 > 1. datajs 模版
 > 2. 常用样式生成
 > 3. enviroment文件 生成，区分开发环境
-> 4. vue.config.js 配置生存 
+> 4. vue.config.js 配置生存
 > 5. 去 console,注释配置，sourceMap配置，分包配置
 > 6. axios 模版生成
-> 7. 批量生成模块对应的 floder,api,store
+> 7. 批量生成模块对应的 floder,api,stores
 
 ## todo list
 
