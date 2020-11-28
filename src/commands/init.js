@@ -9,6 +9,7 @@ const { prompt } = require('inquirer')
 const ora = require('ora')
 const path = require('path')
 const execa = require('execa');
+const {addPlugin} = require('./add')
 
 // const download = require('download-git-repo')
 
@@ -35,15 +36,18 @@ async function init() {
         ]
       }
     ])
-    answers.selects.forEach(item=>{
-      execa.sync('vdoc',['add',item])
-    })
-  } catch (error) {
-    console.log(error)
+    // answers.selects.forEach(item=>{
+    //   // let exec = `vdoc add ${item}`
+    //   // execa.sync(exec)
+    //   execa.sync('vdoc',['add',`${item}`])
+    // })
+      for(item of answers.selects){
+       await addPlugin(item)
+      }
+    } catch (error) {
+      console.log(error)
+    }
 }
-}
-
-
 
   // 处理结果
   // download(config.path,'test/tmp',(err)=>{

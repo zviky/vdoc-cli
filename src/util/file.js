@@ -40,7 +40,6 @@ function download(url) {
  * @param {string} dir
  */
 async function copyFile (targetDir,dir){
-
   const exist = await exitstFile(dir)
   if(exist){
     const answers = await prompt([

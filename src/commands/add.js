@@ -44,3 +44,7 @@ async function addPlugin(item){
         }
     
 }
+
+module.exports = {
+    addPlugin
+}
