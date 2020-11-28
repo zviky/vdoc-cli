@@ -8,6 +8,7 @@
 
 let fs = require('fs');
 let http = require("https");
+let buf = new Buffer.alloc(10240);
 const { prompt } = require('inquirer')
 
 const chalk = require('chalk');
@@ -87,6 +88,49 @@ function mkdir(dir){
     if (err) throw err;
   });
 }
+
+/**
+ * 重写package.json中的script部分
+ */
+function reWritePackage(path = './package.json') {
+  fs.open(path, 'r+', function(err, fd){
+    if (err) {
+      return console.error(err);
+    }
+    fs.read(fd, buf, 0, buf.length, 0, function(err, bytes){
+      if (err){
+         console.log(err);
+      }
+      
+      // 仅输出读取的字节
+      if(bytes > 0){
+         let obj = JSON.parse(buf.slice(0, bytes).toString())
+         let userCommand = {
+          "test": "echo \"Error: no test specified\" && exit 1",
+          "build:dev": "cross-env NODE_ENV=development node runConfig",
+          "build:test": "cross-env NODE_ENV=test node runConfig",
+          "build:pro": "cross-env NODE_ENV=production node runConfig"
+         }
+         obj.scripts = userCommand
+         let finalJson = JSON.stringify(obj, null, 2)
+
+         fs.writeFileSync(path, finalJson,  function(err) {
+          if (err) {
+              return console.error(err);
+          }
+          fs.close(fd, function(err){
+            if (err){
+               console.log(err);
+            } 
+            console.log("文件关闭成功");
+          });
+        });
+      }
+   });
+  })
+}
+
+reWritePackage();
 
 module.exports = {
   download,copyFile,mkdir

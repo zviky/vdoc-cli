@@ -7,7 +7,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:dev": "cross-env NODE_ENV=development node runConfig",
+    "build:test": "cross-env NODE_ENV=test node runConfig",
+    "build:pro": "cross-env NODE_ENV=production node runConfig"
   },
   "author": "doctor",
   "license": "ISC",

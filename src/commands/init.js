@@ -32,7 +32,8 @@ async function init() {
         choices: [
             { name: 'data', value: 'data' },
             { name: 'utils', value: 'utils' },
-            { name: 'styles', value: 'styles' }
+            { name: 'styles', value: 'styles' },
+            { name: 'config', value: 'config' },
         ]
       }
     ])
