@@ -21,7 +21,13 @@ src
 
 ## todo list
 
-[-] 使用单个线程跑命令 
+[x] 使用单个线程跑命令 
+[-] script 配置不同环境命令+config
+[-] vue.config.js
+[-] 区分dev和pro
+[-] vue.config.js css预处理
+[-] vendor 分包
+
 
 cli for vue
 npm link 才能使用命令
