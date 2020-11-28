@@ -13,9 +13,13 @@ console.log(process.cwd())     // /Users/doctor/programs/fed/mobile
 
 init();
 async function init(){
-
-    for(const item of plugins){
-        await addPlugin(item)
+    
+    try {
+        for(const item of plugins){
+            await addPlugin(item)
+        }
+    } catch (error) {
+        console.log(error)
     }
 }
 

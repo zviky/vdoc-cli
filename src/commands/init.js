@@ -22,23 +22,25 @@ console.log(process.cwd())     // /Users/doctor/programs/fed/mobile
 init()
 async function init() {
   // 设置问题
-  const answers = await prompt([
-    {
-      type: 'checkbox',
-      name: 'selects',
-      message: '请选择需要安装项目',
-      choices: [
-          { name: 'data', value: 'data' },
-          { name: 'utils', value: 'utils' },
-          { name: 'styles', value: 'styles' }
-      ]
-    }
-  ])
-
-  answers.selects.forEach(item=>{
-    let exec = `vdoc add ${item}`
-    execa.sync(exec)
-  })
+  try{
+    const answers = await prompt([
+      {
+        type: 'checkbox',
+        name: 'selects',
+        message: '请选择需要安装项目',
+        choices: [
+            { name: 'data', value: 'data' },
+            { name: 'utils', value: 'utils' },
+            { name: 'styles', value: 'styles' }
+        ]
+      }
+    ])
+    answers.selects.forEach(item=>{
+      execa.sync('vdoc',['add',item])
+    })
+  } catch (error) {
+    console.log(error)
+}
 }
 
 

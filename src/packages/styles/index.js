@@ -1,6 +1,6 @@
 const { copyFile, mkdir } = require('../../util/file')
 const path = require('path')
-const temps = ['function.styl','globle.styl','theme.styl']
+const temps = ['function.styl','global.styl','theme.styl']
 
 async function init(){
     mkdir('test/tmp/styles')
